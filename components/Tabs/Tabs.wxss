@@ -1,0 +1,19 @@
+
+.tabs_title {
+    display: flex;
+
+}
+.tabs_title .title_item {
+    width: 33.33%;
+    text-align: center;
+    padding: 15rpx 0;
+}
+.active {
+    color:var(--themeColor);
+    border-bottom: 5rpx solid currentColor;
+}
+
+
+
+
+
