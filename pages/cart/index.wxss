@@ -10,6 +10,10 @@ page {
     width: 60%;
 }
 
+.revice_address_row .change_address {
+    width: 100%;
+}
+
 .revice_address_row .user_info_row {
     display: flex;
     padding: 20rpx;

@@ -5,7 +5,7 @@
 		<button bindtap="handleChooseAddress" type="primary" plain>获取收货地址</button>
 	</view>
 	<!-- 当收货地址 存在 详细信息就显示 -->
-	<view wx:else class="user_info_row">
+	<view wx:else class="user_info_row" bindtap="handleChooseAddress">
 		<view class="user_info">
 			<view>{{address.userName}}</view>
 			<view>{{address.all}}</view>
