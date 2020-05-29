@@ -1,4 +1,5 @@
 import { request } from "../../request/index.js";
+import {formatTime} from "../../utils/util.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
 
 Page({
@@ -50,7 +51,8 @@ Page({
         const { type } = currentPage.options;
         // 4 激活选中页面标题 当 type=1 index=0 
         this.changeTitleByIndex(type - 1);
-        this.getOrders(type);
+        // this.getOrders(type);
+        this.getOrderList();
     },
     // 获取订单列表的方法
     async getOrders(type) {
@@ -59,6 +61,17 @@ Page({
         // this.setData({
         //     orders: res.orders.map(v => ({ ...v, create_time_cn: (new Date(v.create_time * 1000).toLocaleString()) }))
         // })
+    },
+
+    getOrderList() {
+        let orderList = wx.getStorageSync('orderList') || [];
+        // console.log(formatTime(Date()), 'huwei');
+        // this.setData({
+        //     orders: orderList.map(v => ({...v, create_time_cn: formatTime(v.create_time_cn)}))
+        // })
+        this.setData({
+            orders: orderList
+        });
     },
     // 根据标题索引来激活选中 标题数组
     changeTitleByIndex(index) {

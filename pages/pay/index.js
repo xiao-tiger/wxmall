@@ -36,7 +36,7 @@ Page({
         let cart = wx.getStorageSync("cart") || [];
         // 过滤后的购物车数组
         cart = cart.filter(v => v.checked);
-        this.setData({ address });
+        // this.setData({ address });
 
         // 1 总价格 总数量
         let totalPrice = 0;
@@ -47,7 +47,8 @@ Page({
         })
         this.setData({
             cart,
-            totalPrice, totalNum,
+            totalPrice,
+            totalNum,
             address
         });
     },
@@ -101,6 +102,44 @@ Page({
             await showToast({ title: "支付失败" })
             console.log(error);
         }
+    },
+
+    handlePay() {
+        let cart = this.data.cart;
+        let totalPrice = this.data.totalPrice;
+
+        wx.showModal({
+            cancelColor: 'cancelColor',
+            cancelText: '取消',
+            confirmColor: 'confirmColor',
+            confirmText: '确认',
+            content: '确定下单么',
+            showCancel: true,
+            title: '支付',
+            success: (result) => {
+                let orderList = wx.getStorageSync('orderList') || [];
+                let order = {
+                    create_time_cn: new Date(),
+                    order_price: totalPrice,
+                    order_number: Date.now(),
+                };
+                // orderList.push(order);
+                orderList.unshift(order);
+                wx.setStorageSync('orderList', orderList);
+                // 手动删除缓存中 已经支付了的商品
+                let newCart = wx.getStorageSync("cart");
+                newCart = newCart.filter(v => !v.checked);
+                wx.setStorageSync("cart", newCart);
+                wx.navigateTo({
+                    url: '/pages/order/index'
+                });
+            },
+            fail: (res) => {
+                console.log(res, 'err');
+            }
+
+        });
+  
     }
 
 
