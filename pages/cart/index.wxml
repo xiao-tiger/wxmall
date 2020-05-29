@@ -22,6 +22,7 @@
 		<!-- 当cart数组 长度不为0 显示 商品信息 -->
 		<block wx:if="{{cart.length!==0}}">
 			<view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
+			
 				<!-- 复选框 -->
 				<view class="cart_chk_wrap">
 					<checkbox-group data-id="{{item.goods_id}}" bindchange="handeItemChange">
@@ -29,7 +30,7 @@
 					</checkbox-group>
 				</view>
 				<!-- 商品图片 -->
-				<navigator class="cart_img_wrap">
+				<navigator class="cart_img_wrap" url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
 					<image mode="widthFix" src="{{item.goods_small_logo}}"></image>
 				</navigator>
 				<!-- 商品信息 -->
@@ -44,6 +45,7 @@
 						</view>
 					</view>
 				</view>
+			
 			</view>
 		</block>
 		<block wx:else>
