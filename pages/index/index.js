@@ -36,7 +36,10 @@ Page({
       url: '/home/swiperdata'
     }).then(res => {
       this.setData({
-        swiperList: res
+        swiperList: res.map(v => {
+          v.navigator_url = v.navigator_url.replace('main', 'index');
+          return v;
+        })
       });
     })
   },
@@ -57,7 +60,13 @@ Page({
     .then(res => {
       console.log(res);
       this.setData({
-        floorList: res
+        floorList: res.map(v => {
+          let item = v.product_list;
+          item.forEach(v1 => {
+            v1.navigator_url = v1.navigator_url.replace('/pages/goods_list', '/pages/goods_list/index');
+          });
+          return v
+        })
       })
     })
   }

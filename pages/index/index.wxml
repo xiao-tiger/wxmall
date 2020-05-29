@@ -33,8 +33,8 @@
     <navigator 
       wx:for="{{cateList}}" 
       wx:key="name" 
-      url="{{item.navigator_url}}"
-      open-type="{{item.open_type}}"
+      url="/pages/category/index"
+      open-type="switchTab"
     >
       <image mode="widthFix" src="{{item.image_src}}"></image>
     </navigator>
@@ -62,6 +62,7 @@
           wx:for-index="index2"
           wx:key="name"
           url="{{item2.navigator_url}}"
+          
         >
           <image mode="{{index2===0?'widthFix':'scaleToFill'}}" src="{{item2.image_src}}"></image>
         </navigator>

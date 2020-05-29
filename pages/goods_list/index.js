@@ -39,9 +39,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        // {cid: 3}
-        let {cid} = options;
+        let cid = options.cid || "";
+        let query = options.query || "";
         this.QueryParams.cid = cid;
+        this.QueryParams.query = query;
         this.getGoodsList(this.QueryParams);
 
     },
