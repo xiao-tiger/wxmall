@@ -12,8 +12,8 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-        let userinfo = wx.getStorageSync('userinfo');
+    onShow: function (options) {
+        let userinfo = wx.getStorageSync('userinfo') || {};
         let collect = wx.getStorageSync('collect') || [];
 
         let collectNums = collect.length;

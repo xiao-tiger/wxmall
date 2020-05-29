@@ -16,6 +16,7 @@ Page({
     },
     handleGetUserInfo(e) {
         const { userInfo } = e.detail;
+        console.log(userInfo, 'login');
         wx.setStorageSync("userinfo", userInfo);
         wx.navigateBack({
             delta: 1

@@ -58,7 +58,6 @@ Page({
       url: '/home/floordata'
     })
     .then(res => {
-      console.log(res);
       this.setData({
         floorList: res.map(v => {
           let item = v.product_list;
